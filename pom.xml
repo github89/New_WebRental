@@ -5,7 +5,7 @@
   <groupId>com.rental</groupId>
   <artifactId>WebRental</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>WebRental</name>
   <url>http://maven.apache.org</url>
@@ -18,8 +18,22 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-compiler-plugin</artifactId>
+  			<version>3.2</version>
+  			<configuration>
+  				<target>1.8</target>
+  				<source>1.8</source>
+  				<encoding>utf-8</encoding>
+  			</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
 </project>
