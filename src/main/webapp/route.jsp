@@ -22,6 +22,19 @@
 <script type="text/javascript" src="${angular}/angular-1.3.15/angular-route.min.js"></script>
 <script type="text/javascript">
 	var app = angular.module("myApp", ["ngSanitize", "ngAnimate", "ngRoute"]);
+	app.config(function($routeProvider) {
+		$routeProvider
+			.when('/home', {
+							templateUrl: 'home.jsp',
+							controller: 'homeController'
+							})
+			.when('/userList', {
+								templateUrl: 'userList.jsp',
+								controller: 'userListCtrl'
+								})
+			.otherwise({redirectTo:'/home'});
+	});	
+	
 	app.controller("myController", function($scope) {
 		
 	});
@@ -29,6 +42,10 @@
 
 </head>
 <body data-ng-controller = "myController">
+
+<ng-view>
+
+</ng-view>
 
 
 </body>
