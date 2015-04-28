@@ -1,0 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<c:url value="/css/jquery.mobile.min.css" var="cssjquerymobile"/>
+<c:url value="/js/jquery.min.js" var="jquery"/>
+<c:url value="/js/jquery.mobile.min.js" var="jquerymobile"/>
+<c:url value="/js/cordova.js" var="cordova"/>
+
+<%-- <link rel="stylesheet" type="text/css" href="${cssjquerymobile}"/> --%>
+<script type="text/javascript" src="${jquery}"></script>
+<%-- <script type="text/javascript" src="${jquerymobile}"></script> --%>
+<%-- <script type="text/javascript" src="${cordova}"></script> --%>
