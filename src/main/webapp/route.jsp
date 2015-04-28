@@ -23,20 +23,30 @@
 <script type="text/javascript">
 	var app = angular.module("myApp", ["ngSanitize", "ngAnimate", "ngRoute"]);
 	app.config(function($routeProvider) {
-		$routeProvider
-			.when('/home', {
-							templateUrl: 'home.jsp',
-							controller: 'homeController'
-							})
-			.when('/userList', {
-								templateUrl: 'userList.jsp',
-								controller: 'userListCtrl'
-								})
-			.otherwise({redirectTo:'/home'});
+		
+		var emp ={
+				templateUrl : "emp.jsp",
+				controller : empController
+		};
+		var city ={
+				templateUrl : "city.jsp",
+				controller : cityController
+		};
+		$routeProvider.when('/emp', emp);
+		$routeProvider.when('/city', city);
+		$routeProvider.otherwise({redirectTo:'/emp'});
 	});	
 	
 	app.controller("myController", function($scope) {
 		
+	});
+	
+	app.controller("empController", function($scope) {
+		alert("empController");
+	});
+	
+	app.controller("cityController", function($scope) {
+		alert("cityController");
 	});
 </script>
 
