@@ -26,11 +26,11 @@
 		
 		var emp ={
 				templateUrl : "emp.jsp",
-				controller : empController
+				controller : "empController"
 		};
 		var city ={
 				templateUrl : "city.jsp",
-				controller : cityController
+				controller : "cityController"
 		};
 		$routeProvider.when('/emp', emp);
 		$routeProvider.when('/city', city);
@@ -43,20 +43,25 @@
 	
 	app.controller("empController", function($scope) {
 		alert("empController");
+		$socpe.message = "직원 리스트";
 	});
 	
 	app.controller("cityController", function($scope) {
 		alert("cityController");
+		$socpe.message = "도시 리스트";
 	});
 </script>
 
 </head>
 <body data-ng-controller = "myController">
+<div class="container">
+	<a href="#emp" class="btn">emp list</a>
+	<a href="#city" class="btn">city list</a>
+	<hr>
+	<ng-view>
 
-<ng-view>
-
-</ng-view>
-
+	</ng-view>
+</div>
 
 </body>
 </html>
