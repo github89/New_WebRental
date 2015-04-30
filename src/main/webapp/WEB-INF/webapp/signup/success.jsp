@@ -7,8 +7,8 @@
 <title>loginsuccess.jsp</title>
 </head>
 <body>
-<h1>${sessionScope.user.id}님 반갑습니다!</h1>
+<h1>${sessionScope.user.id}님 회원가입을 축하드립니다!</h1>
 <hr>
-<a href="http://localhost:8080/WebRental/webapp/test/borad">게시판으로</a>
+
 </body>
 </html>

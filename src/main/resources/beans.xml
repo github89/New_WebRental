@@ -9,10 +9,10 @@
 <context:component-scan base-package="com.rental.controller" />
 
 <bean  id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-	<property name="driverClassName" value="${oracle.className}"/>
-	<property name="url" value="${oracle.url}"/>
-	<property name="username" value="${oracle.user}"/>
-	<property name="password" value="${oracle.password}"/>
+	<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+	<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+	<property name="username" value="scott"/>
+	<property name="password" value="tiger"/>
 </bean>
 
 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -20,30 +20,24 @@
 	<property name="mapperLocations">
 		<list>
 			<value>classpath:/com/rental/dao/xml/LoginDao.xml</value>		
+			<value>classpath:/com/rental/dao/xml/SignUpDao.xml</value>
 		</list>
 	</property>
 </bean>
 
-<!-- <bean id="deptDao" class="org.mybatis.spring.mapper.MapperFactoryBean"> -->
-<!-- 	<property name="sqlSessionFactory" ref="sqlSessionFactory"/> -->
-<!-- 	<property name="mapperInterface" value="webapp.dao.DeptDao"/> -->
-<!-- </bean> -->
+<bean id="loginDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	<property name="mapperInterface" value="com.rental.dao.LoginDao"/>
+</bean>
 
-<!-- <bean id="deptDao" class="webapp.dao.impl.MyDeptDao"> -->
-<!-- 	<property name="dataSource" ref="dataSource"/> -->
-<!-- </bean> -->
+<bean id="signUpDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	<property name="mapperInterface" value="com.rental.dao.SignUpDao"/>
+</bean>
 
-<!-- <bean id="deptDao" class="webapp.dao.impl.JdbcDeptDao"> -->
+<!-- <bean id="UserInfoService" class="com.rental.service.UserInfoService"> -->
 <!-- 	<property name="dataSource" ref="dataSource"/> -->
-<!-- </bean> -->
-
-<!-- <bean id="deptDao" class="webapp.dao.impl.SpringJdbcDeptDao"> -->
-<!-- 	<property name="dataSource" ref="dataSource"/> -->
-<!-- </bean> -->
-
-<!-- <bean id="deptInfoService" class="webapp.service.DeptInfoService"> -->
-<!-- 	<property name="dataSource" ref="dataSource"/> -->
-<!-- 	<property name="deptDao" ref="deptDao"/> -->
+<!-- 	<property name="loginDao" ref="loginDao"/> -->
 <!-- </bean> -->
 
 </beans>
