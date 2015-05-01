@@ -29,7 +29,7 @@ public class HomeController{
 	@RequestMapping(value="/main", method=RequestMethod.GET)
     public String Home() {
 		
-        return "mainpage";
+        return "/main/mainpage";
     }
 
 	
