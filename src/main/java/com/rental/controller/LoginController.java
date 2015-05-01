@@ -4,10 +4,12 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.rental.dao.LoginDao;
 import com.rental.model.User;
 
 @Controller
@@ -15,7 +17,11 @@ import com.rental.model.User;
 public class LoginController {
 	
 	static Log log = LogFactory.getLog(LoginController.class);
-
+	
+	@Autowired
+	LoginDao loginDao;
+	
+	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String login() {
 		
@@ -35,18 +41,31 @@ public class LoginController {
 		log.info("password = " + user.getPassword());
 		log.info("#############################");
 		
-		if ("webapp".equals(user.getId()) && "1234".equals(user.getPassword())) {
-			// Login success
-			session.setAttribute("user", user);
-			return "login/success";
-		} else {
-			// Login fail
+		User returnedUser = loginDao.getUserInfo(user.getId());
+		
+		log.info("#############################");
+		log.info("쿼리 검증" );
+		try {
+			log.info("id = " + returnedUser.getId());
+			log.info("password = " + returnedUser.getPassword());
+		} catch (NullPointerException e) {
+			// TODO: handle exception
 			return "redirect:login";
 		}
+		log.info("#############################");
 		
-		
-		
-				
+		if (user.getId().equals(returnedUser.getId()) && user.getPassword().equals(returnedUser.getPassword())) {
+			session.setAttribute("user", user);
+			log.info("######################################");
+			log.info("로그인 " + session.getId());
+			log.info(session.getAttribute("user"));
+			log.info("######################################");
+			
+			return "login/success";
+		} else { 
+			return "redirect:login";
+		}
+			
 	}
 	
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
@@ -54,6 +73,10 @@ public class LoginController {
 		
 		session.invalidate();
 		
-		return "login/logoutsuccess";
+		log.info("######################################");
+		log.info("로그아웃 " + session.getId());
+		log.info("######################################");
+		
+		return "login/loginform";
 	}
 }
