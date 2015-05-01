@@ -18,4 +18,11 @@
 	<property name="suffix" value=".jsp"/>
 </bean>
 
+  <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/board/**/*"/>
+            <bean class="com.rental.controller.Interceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>

@@ -1,6 +1,5 @@
 package com.rental.model;
 
-import org.apache.ibatis.type.Alias;
 
 public class User {
 

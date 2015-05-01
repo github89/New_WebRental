@@ -45,12 +45,22 @@ public class LoginController {
 		
 		log.info("#############################");
 		log.info("쿼리 검증" );
-		log.info("id = " + returnedUser.getId());
-		log.info("password = " + returnedUser.getPassword());
+		try {
+			log.info("id = " + returnedUser.getId());
+			log.info("password = " + returnedUser.getPassword());
+		} catch (NullPointerException e) {
+			// TODO: handle exception
+			return "redirect:login";
+		}
 		log.info("#############################");
 		
 		if (user.getId().equals(returnedUser.getId()) && user.getPassword().equals(returnedUser.getPassword())) {
 			session.setAttribute("user", user);
+			log.info("######################################");
+			log.info("로그인 " + session.getId());
+			log.info(session.getAttribute("user"));
+			log.info("######################################");
+			
 			return "login/success";
 		} else { 
 			return "redirect:login";
@@ -63,6 +73,10 @@ public class LoginController {
 		
 		session.invalidate();
 		
-		return "login/logoutsuccess";
+		log.info("######################################");
+		log.info("로그아웃 " + session.getId());
+		log.info("######################################");
+		
+		return "login/loginform";
 	}
 }
