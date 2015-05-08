@@ -18,18 +18,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Servlet implementation class home
  */
 @Controller
-@RequestMapping("/home")
-public class HomeController{
+@RequestMapping("/page")
+public class mapController{
 	@Autowired
 	DataSource ds;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-	@RequestMapping(value="/main", method=RequestMethod.GET)
+	@RequestMapping(value="/map", method=RequestMethod.GET)
     public String Home() {
 		
-        return "/main/mainpage";
+        return "/page/map";
     }
 
 	@RequestMapping(value="/emp", method=RequestMethod.GET)
