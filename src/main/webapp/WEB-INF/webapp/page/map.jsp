@@ -14,37 +14,50 @@
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script> 
 <!-- google map script -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script> 
-var x = 37.5615964;
-var y = 126.9086431;
-function initialize() { 
-	  var myLatlng = new google.maps.LatLng(x,y); 
-	  var mapOptions = { 
-	        zoom: 17, 
-	        center: myLatlng, 
-	        mapTypeId: google.maps.MapTypeId.ROADMAP 
-	  } 
-	  var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions); 
-	  }
- </script>
  <script>
+ //input에서 주소 받아서 위도와 경도 구하는 부분
+var x = 37.566535;
+ var y = 126.97796; 
 $(document).ready(function() {
-	$('#map').click(function() {
-		var add = $('#add').val();
-// 		alert(add);
-		var mapSrc = 'http://openapi.map.naver.com/api/geocode.php?key=c1b406b32dbbbbeee5f2a36ddc14067f&encoding=utf-8&latlng&query=';
-		var mapXY = mapSrc+add;
-		alert(mapXY);
-	});
+	$('#map').mousedown(function map() {
+		var addr = $('#add').val();
+		var geocoder;
+		geocoder = new google.maps.Geocoder();
+		geocoder.geocode({'address':addr}, function(results,status) {
+			if(status==google.maps.GeocoderStatus.OK){
+				x = results[0].geometry.location.lat();
+				y = results[0].geometry.location.lng();
+			} else{
+				x = "";
+				y = "";
+			}
+			document.sangchaji_faddr_lat.value = x;
+			document.sangchaji_faddr_lng.value = y;
+			
+			alert('x : ' + x +'\n\n' + 'y : '+y);
+			return;
+		});//위/경도 추출 끝
+		
+		var myLatlng = new google.maps.LatLng(x,y); 
+		  var mapOptions = {
+		        zoom: 17, 
+		        center: myLatlng 
+		  } 
+		  var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+		
+	});//클릭 이벤트 끝
+
 });
  
  	
  </script>
 
+
+
 </head>
 <body onload="initialize()">
-	<div id="map_canvas" style="width:500px; height:300px;"></div><br>
 	<input id="add" type="text"></input><button id="map">지도보기</button>
+	<div id="map_canvas" style="width:500px; height:300px;"></div><br>
 	
 </body>
 
