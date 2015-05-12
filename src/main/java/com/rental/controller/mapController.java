@@ -32,9 +32,4 @@ public class mapController{
         return "/page/map";
     }
 
-	@RequestMapping(value="/emp", method=RequestMethod.GET)
-	public String emt(){
-		
-		return "/main/emtP";
-	}
 }
