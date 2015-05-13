@@ -21,6 +21,7 @@
 		<list>
 			<value>classpath:/com/rental/dao/xml/LoginDao.xml</value>		
 			<value>classpath:/com/rental/dao/xml/SignUpDao.xml</value>
+			<value>classpath:/com/rental/dao/xml/BoardDao.xml</value>
 		</list>
 	</property>
 </bean>
@@ -33,6 +34,11 @@
 <bean id="signUpDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
 	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	<property name="mapperInterface" value="com.rental.dao.SignUpDao"/>
+</bean>
+
+<bean id="boardDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	<property name="mapperInterface" value="com.rental.dao.BoardDao"/>
 </bean>
 
 <!-- <bean id="UserInfoService" class="com.rental.service.UserInfoService"> -->

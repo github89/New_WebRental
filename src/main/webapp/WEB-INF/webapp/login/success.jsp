@@ -12,7 +12,7 @@
 <form action="logout" method="get">
 <button>로그아웃</button>
 </form>
-<a href="http://localhost:8080/WebRental/webapp/board/board">게시판으로</a>
+<a href="../board/board">게시판으로</a>
 <a href="http://localhost:8080/WebRental/webapp/referrer/referrertest">리퍼러 테스트</a>
 </body>
 </html>

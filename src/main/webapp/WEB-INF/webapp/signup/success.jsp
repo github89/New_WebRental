@@ -9,6 +9,15 @@
 <body>
 <h1>${sessionScope.user.id}님 회원가입을 축하드립니다!</h1>
 <hr>
+<a href="../login/login"><button>홈으로
 
+
+
+
+
+
+
+
+</button></a>
 </body>
 </html>

@@ -1,12 +1,6 @@
 package com.rental.controller;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/home")
 public class HomeController{
-	@Autowired
-	DataSource ds;
+//	@Autowired
+//	DataSource ds;
        
     /**
      * @see HttpServlet#HttpServlet()

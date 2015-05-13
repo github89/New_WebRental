@@ -18,7 +18,7 @@
 <a>연락처 </a><input type="tel" name="contact" /> <br>
 <a>이메일 </a><input type="email" name="email" /> <br>
 <input type="submit" value="가입신청" />
-<input type="submit" value="취소" />
+<a href="../login/login"><button>취소</button></a>
 
 
 </form>

@@ -8,7 +8,14 @@ public class User {
 	String address;
 	String contact;
 	String email;
+	String authorities;
 	
+	public String getAuthorities() {
+		return authorities;
+	}
+	public void setAuthorities(String authorities) {
+		this.authorities = authorities;
+	}
 	public String getAddress() {
 		return address;
 	}
